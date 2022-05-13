@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+        <h1 class="display-4">Convert number to sentence</h1>
+    </div>
+    <p></p>
+    <form asp-action="Convert" asp-controller="Home" method="post">
+       <div class="text-left">
+        <label>Enter Number (Ex. xxxx.xx)</label>
+        <input type="text" name="numberToConvert"/>
+        <input type="submit" value="Convert" class="btn-sm" />
+        
+    </div>
+    </form>
+    <div class="text-left">
+        @ViewBag.ConvertedNumber
+    </div>
