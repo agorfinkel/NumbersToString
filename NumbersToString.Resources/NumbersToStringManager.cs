@@ -20,26 +20,24 @@ namespace NumbersToString.Resources
         {
             var subString = string.Empty;
             var convertedValue = string.Empty;
-
-            var decimalValue = ((decimal)n % 1);
-            var num = (int)Math.Truncate(n);
+            
             try
             {
+                var decimalValue = ((decimal)n % 1);
+                var num = (int)Math.Truncate(n);
+
                 if (decimalValue > 0)
                 {
                     var toString = decimalValue.ToString();
-                    if (toString.Length == 3) //0.2
+                    if (toString.Length == 3) //0.1
                     {
                         subString = toString.Substring(toString.IndexOf("."), 2);
                     }
-                    else if (toString.Length == 4) //0.02
+                    else  //0.01
                     {
                         subString = toString.Substring(toString.IndexOf("."), 3);
                     }
-                    else
-                    {
-                        return "To many numbers after decimal.";
-                    }
+
                     convertedValue = $"{ToSentence(num)} and {subString.Replace(".", "")}/100."; ;
                 }
                 else
@@ -50,7 +48,7 @@ namespace NumbersToString.Resources
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                return null;
             }
 
             return convertedValue;

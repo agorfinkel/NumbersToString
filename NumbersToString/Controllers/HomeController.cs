@@ -1,11 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using NumbersToString.Models;
-using System;
-using System.Collections.Generic;
+
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace NumbersToString.Controllers
 {
@@ -18,25 +15,16 @@ namespace NumbersToString.Controllers
             _logger = logger;
         }
 
-        
-        public IActionResult Index()            
+
+        public IActionResult Index()
         {
-            return View();   
-        
+            return View();
         }
         public IActionResult Convert(double numberToConvert)
         {
-            if (numberToConvert != 0)
-            {
-                ViewBag.numberToConvert = numberToConvert;
-                var numbersToStringManager = new Resources.NumbersToString();
-                ViewBag.ConvertedNumber = numbersToStringManager.Convert(numberToConvert);
-            }
-            if (numberToConvert < 0)
-                ViewBag.ConvertedNumber = "Number cannot be negative";
-
+            var numbersToStringManager = new Resources.NumbersToString();
+            ViewBag.ConvertedNumber = numbersToStringManager.Convert(numberToConvert);
             return View("Index");
-            
         }
         public IActionResult Privacy()
         {
